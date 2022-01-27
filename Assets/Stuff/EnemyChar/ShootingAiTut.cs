@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class ShootingAiTut : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public GameObject bulletSpawn;
 
     public Transform player;
     public GameObject gun;
@@ -100,16 +101,24 @@ public class ShootingAiTut : MonoBehaviour
 
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
+        //agent.Stop();
 
         transform.LookAt(player);
 
         if (!alreadyAttacked){
 
             //Attack
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            Rigidbody rb = Instantiate(projectile, bulletSpawn.transform.position, bulletSpawn.transform.rotation).GetComponent<Rigidbody>();
 
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8, ForceMode.Impulse);
+            //rb.velocity = Vector3.MoveTowards(transform.position, player.position, 32 * Time.deltaTime);
+
+            rb.velocity = (player.position - rb.position).normalized * 50;
+
+            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+             rb.AddForce(transform.up * 2, ForceMode.Impulse);
+
+            //var dir = (player.transform.position - rb.transform.position).normalized;
+            //rb.velocity = dir * 34;
 
             alreadyAttacked = true;
             Invoke("ResetAttack", timeBetweenAttacks);
