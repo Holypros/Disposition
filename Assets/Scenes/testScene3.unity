@@ -18286,3 +18286,23 @@ MonoBehaviour:
   isWorldTwoActive: 0
   worldOne: {fileID: 0}
   worldTwo: {fileID: 0}
+  mRendererOne: {fileID: 0}
+  mRendererTwo: {fileID: 0}
+  mRendererOneOne: {fileID: 0}
+  mRendererTwoTwo: {fileID: 0}
+--- !u!114 &9110493701271456914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9110493701271456899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e738c8a4651acf469c9586c5daf018b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 0
+  isPlayerAlive: 1
+  animator1: {fileID: 0}
+  animator2: {fileID: 0}
