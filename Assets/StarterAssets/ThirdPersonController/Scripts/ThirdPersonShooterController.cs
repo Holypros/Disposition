@@ -13,6 +13,7 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private Transform debugTransform;
     [SerializeField] private Transform bulletProj;
     [SerializeField] private Transform spawnBulletPosition;
+    [SerializeField] private Transform muzzleFlash;
 
     float time = 0f;
 
@@ -73,6 +74,9 @@ public class ThirdPersonShooterController : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward,aimDirection,Time.deltaTime* 1000f);
             thirdPersonController.SetRotateOnMove(false);
             Transform bulletGame = Instantiate(bulletProj, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            Transform particle =  Instantiate(muzzleFlash, spawnBulletPosition.position, Quaternion.identity);
+            
+            
             bulletGame.GetComponent<BulletHit>().timeTravel = GetComponent<TimeTravel>();
             starterAssetsInput.shoot = false;
         }
