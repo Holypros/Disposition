@@ -14,6 +14,8 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private Transform bulletProj;
     [SerializeField] private Transform spawnBulletPosition;
 
+    float time = 0f;
+
 
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInput;
@@ -53,18 +55,30 @@ public class ThirdPersonShooterController : MonoBehaviour
         {
             aimVirtualCamera.gameObject.SetActive(false);
             thirdPersonController.SetSensitivity(normalSensitivity);
-            thirdPersonController.SetRotateOnMove(true);
+            if(time < Time.time)
+            {
+                thirdPersonController.SetRotateOnMove(true);
+            }
+            
+           
         }
 
         if (starterAssetsInput.shoot)
         {
+            time = Time.time + 1;
             Vector3 aimDir  = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+            Vector3 worldAimTarget = mouseWorldPosition;
+            worldAimTarget.y = transform.position.y;
+            Vector3 aimDirection= (worldAimTarget-transform.position).normalized;
+            transform.forward = Vector3.Lerp(transform.forward,aimDirection,Time.deltaTime* 1000f);
+            thirdPersonController.SetRotateOnMove(false);
             Transform bulletGame = Instantiate(bulletProj, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
             bulletGame.GetComponent<BulletHit>().timeTravel = GetComponent<TimeTravel>();
             starterAssetsInput.shoot = false;
         }
        
     }
+    
 
 
       
