@@ -16,9 +16,12 @@ namespace StarterAssets
 	{
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
-		public float MoveSpeed = 2.0f;
+		public float MoveSpeed = 3f;
+		public float jumpSpeed = 5.0f;
+		public float shiftSpeed = 10.0f;
+
 		[Tooltip("Sprint speed of the character in m/s")]
-		public float SprintSpeed = 5.335f;
+		public float SprintSpeed = 5.33f;
 		[Tooltip("How fast the character turns to face movement direction")]
 		[Range(0.0f, 0.3f)]
 		public float RotationSmoothTime = 0.12f;
@@ -95,6 +98,10 @@ namespace StarterAssets
 		private const float _threshold = 0.01f;
 
 		private bool _hasAnimator;
+		bool isJumping = false;
+
+		[SerializeField] Animator animator1;
+		[SerializeField] Animator animator2;
 
 		private void Awake()
 		{
@@ -125,6 +132,7 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			
 		}
 
 		private void LateUpdate()
@@ -152,6 +160,22 @@ namespace StarterAssets
 			{
 				_animator.SetBool(_animIDGrounded, Grounded);
 			}
+			animator1.SetBool("isGrounded",Grounded);
+			animator2.SetBool("isGrounded",Grounded);
+			isJumping = Grounded;
+			if(Grounded)
+			{
+				animator1.SetBool("isJumpning",false);
+			    animator2.SetBool("isJumpning",false);
+				
+			}
+			else if(Grounded == false)
+			{
+				animator1.SetBool("isJumping",true);
+				animator2.SetBool("isJumping",true);
+				
+			}
+			
 		}
 
 		private void CameraRotation()
@@ -225,7 +249,15 @@ namespace StarterAssets
 			Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
 			// move the player
-			_controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			if(!isJumping)
+			{
+				_controller.Move(targetDirection.normalized * (jumpSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			}
+			else
+			{
+				_controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			}
+			
 
 			// update animator if using character
 			if (_hasAnimator)
@@ -233,6 +265,35 @@ namespace StarterAssets
 				_animator.SetFloat(_animIDSpeed, _animationBlend);
 				_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
 			}
+			if(currentHorizontalSpeed < 0.5)
+			{
+			animator1.SetBool("isRunning",false);
+			animator2.SetBool("isRunning",false);
+			animator1.SetBool("isIdle",true);
+			animator2.SetBool("isIdle",true);
+			animator1.SetBool("isShifting",false);
+			animator2.SetBool("isShifting",false);
+			}
+			else if(currentHorizontalSpeed > 4.5)
+			{
+			animator1.SetBool("isRunning",false);
+			animator2.SetBool("isRunning",false);
+			animator1.SetBool("isIdle",false);
+			animator2.SetBool("isIdle",false);
+			animator1.SetBool("isShifting",true);
+			animator2.SetBool("isShifting",true);
+			}
+			else
+			{
+				animator1.SetBool("isRunning",true);
+			    animator2.SetBool("isRunning",true);
+				animator1.SetBool("isIdle",false);
+			    animator2.SetBool("isIdle",false);
+				animator1.SetBool("isShifting",false);
+			    animator2.SetBool("isShifting",false);
+			}
+			
+			Debug.Log(currentHorizontalSpeed);
 		}
 
 		private void JumpAndGravity()
@@ -266,6 +327,7 @@ namespace StarterAssets
 					{
 						_animator.SetBool(_animIDJump, true);
 					}
+					
 				}
 
 				// jump timeout

@@ -65,7 +65,7 @@ public class ThirdPersonShooterController : MonoBehaviour
 
         if (starterAssetsInput.shoot)
         {
-            time = Time.time + 1;
+            time = Time.time + 0.5f;
             Vector3 aimDir  = (mouseWorldPosition - spawnBulletPosition.position).normalized;
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
