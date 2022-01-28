@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletTarget : MonoBehaviour
+public class BulletHit : MonoBehaviour
 {
-     
-    public TimeTravel timeTravel;
-    public GameObject player;
-    private void Awake()
-    {
-        timeTravel = player.GetComponent<TimeTravel>(); 
-    }
+    [SerializeField] public TimeTravel timeTravel;
+    [SerializeField] public ShootingAiTut enemyAI;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "EnemyWorldOne" &&  timeTravel.isWorldOneActive)
+        if (other.tag == "EnemyWorldOne" && timeTravel.isWorldOneActive)
         {
+            other.GetComponent<ShootingAiTut>().TakeDamage(20);
             Debug.Log("enemy 1 hit");
             // get component enemy health
             // decrease enemy health
@@ -22,6 +18,7 @@ public class BulletTarget : MonoBehaviour
         if (other.tag == "EnemyWorldTwo" && timeTravel.isWorldTwoActive)
         {
             Debug.Log("enemy 2 hit");
+            other.GetComponent<ShootingAiTut>().TakeDamage(20);
 
             // get component enemy health
             // decrease enemy health

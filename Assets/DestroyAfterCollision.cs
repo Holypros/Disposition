@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class DestroyAfterCollision : MonoBehaviour
 {
+    private void Start()
+    {
+        Destroy(gameObject, 5f);
 
-private void OnCollisionEnter(Collision other) 
-{
-    Destroy(gameObject,0f);
-}
+    }
+    private void OnTriggerEnter(Collider other) 
+    {
+        Debug.Log("Hit something");
+        Destroy(gameObject, 0f);
+
+    }
 
 }

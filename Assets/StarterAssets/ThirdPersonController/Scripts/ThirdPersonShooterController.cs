@@ -59,7 +59,8 @@ public class ThirdPersonShooterController : MonoBehaviour
         if (starterAssetsInput.shoot)
         {
             Vector3 aimDir  = (mouseWorldPosition - spawnBulletPosition.position).normalized;
-            Instantiate(bulletProj, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            Transform bulletGame = Instantiate(bulletProj, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            bulletGame.GetComponent<BulletHit>().timeTravel = GetComponent<TimeTravel>();
             starterAssetsInput.shoot = false;
         }
        

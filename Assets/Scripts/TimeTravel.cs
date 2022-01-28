@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TimeTravel : MonoBehaviour
 {
-    bool isWorldOneActive;
-    bool isWorldTwoActive;
+   public bool isWorldOneActive;
+    public bool isWorldTwoActive;
     [SerializeField] GameObject worldOne;
     [SerializeField] GameObject worldTwo;
     private void Awake()
