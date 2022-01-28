@@ -93,7 +93,7 @@ public class ShootingAiTut : MonoBehaviour
 
         agent.SetDestination(player.position);
 
-        GetComponent<MeshRenderer>().material = yellow;
+        //GetComponent<MeshRenderer>().material = yellow;
     }
     private void AttackPlayer()
     {
@@ -124,7 +124,7 @@ public class ShootingAiTut : MonoBehaviour
             Invoke("ResetAttack", timeBetweenAttacks);
         }
 
-        GetComponent<MeshRenderer>().material = red;
+//        GetComponent<MeshRenderer>().material = red;
     }
     private void ResetAttack()
     {
