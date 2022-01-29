@@ -14,6 +14,8 @@ namespace StarterAssets
 #endif
 	public class ThirdPersonController : MonoBehaviour
 	{
+		[SerializeField] AudioSource audio;
+
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 3f;
@@ -109,6 +111,11 @@ namespace StarterAssets
 			if (_mainCamera == null)
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+				if (audio == null)
+				{
+					audio = GetComponent<AudioSource>();
+
+				}
 			}
 		}
 
@@ -273,6 +280,8 @@ namespace StarterAssets
 			animator2.SetBool("isIdle",true);
 			animator1.SetBool("isShifting",false);
 			animator2.SetBool("isShifting",false);
+				audio.Stop();
+
 			}
 			else if(currentHorizontalSpeed > 4.5)
 			{
@@ -282,6 +291,12 @@ namespace StarterAssets
 			animator2.SetBool("isIdle",false);
 			animator1.SetBool("isShifting",true);
 			animator2.SetBool("isShifting",true);
+				if (!audio.isPlaying)
+				{
+					audio.volume = Random.Range(0.8f, 1);
+					audio.pitch = Random.Range(0.8f, 1.1f);
+					audio.Play();
+				}
 			}
 			else
 			{
@@ -291,6 +306,12 @@ namespace StarterAssets
 			    animator2.SetBool("isIdle",false);
 				animator1.SetBool("isShifting",false);
 			    animator2.SetBool("isShifting",false);
+				if (!audio.isPlaying)
+				{
+					audio.volume = Random.Range(0.8f, 1);
+					audio.pitch = Random.Range(0.8f, 1.1f);
+					audio.Play();
+				}
 			}
 			
 			Debug.Log(currentHorizontalSpeed);

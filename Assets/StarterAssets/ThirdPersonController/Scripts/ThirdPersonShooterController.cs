@@ -14,6 +14,8 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private Transform bulletProj;
     [SerializeField] private Transform spawnBulletPosition;
     [SerializeField] private Transform muzzleFlash;
+    [SerializeField] AudioSource audioSource;
+
 
     float time = 0f;
 
@@ -25,6 +27,8 @@ public class ThirdPersonShooterController : MonoBehaviour
     {
         starterAssetsInput = GetComponent<StarterAssetsInputs>();
         thirdPersonController = GetComponent<ThirdPersonController>();
+        audioSource = GameObject.Find("SpawnLocation").GetComponent<AudioSource>();
+
     }
 
     private void Update()
@@ -66,6 +70,7 @@ public class ThirdPersonShooterController : MonoBehaviour
 
         if (starterAssetsInput.shoot)
         {
+            audioSource.Play();
             time = Time.time + 0.5f;
             Vector3 aimDir  = (mouseWorldPosition - spawnBulletPosition.position).normalized;
             Vector3 worldAimTarget = mouseWorldPosition;

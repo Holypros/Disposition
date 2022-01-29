@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class ShootingAiTut : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
     public NavMeshAgent agent;
     public GameObject bulletSpawn;
 
@@ -37,6 +38,8 @@ public class ShootingAiTut : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
     }
     private void Update()
     {
