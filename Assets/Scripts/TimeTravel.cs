@@ -14,6 +14,9 @@ public class TimeTravel : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer mRendererTwoTwo;
      [SerializeField] MeshRenderer mRendererOneOneOne;
     [SerializeField] MeshRenderer mRendererTwoTwoTwo;
+    public GameObject uiBlue;
+    public GameObject uiRed;
+
 
     private void Awake()
     {
@@ -52,6 +55,9 @@ public class TimeTravel : MonoBehaviour
         mRendererTwo.enabled = false;
         mRendererTwoTwo.enabled = false;
         mRendererTwoTwoTwo.enabled = false;
+        uiRed.SetActive(true);
+        
+        
 
     }
     void Update()
@@ -73,6 +79,8 @@ public class TimeTravel : MonoBehaviour
             mRendererOneOne.enabled = false;
             mRendererTwoTwoTwo.enabled = true;
             mRendererOneOneOne.enabled = false;
+            uiRed.SetActive(false);
+            uiBlue.SetActive(true);
 
             isWorldTwoActive = true;
             isWorldOneActive = false;
@@ -87,8 +95,11 @@ public class TimeTravel : MonoBehaviour
             mRendererOneOne.enabled = true;
             mRendererTwoTwoTwo.enabled = false;
             mRendererOneOneOne.enabled = true;
+             uiBlue.SetActive(false);
+            uiRed.SetActive(true);
             isWorldTwoActive = false;
             isWorldOneActive = true;
+           
         }
     }
 }

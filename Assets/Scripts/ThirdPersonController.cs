@@ -16,6 +16,8 @@ namespace StarterAssets
 	public class ThirdPersonController : MonoBehaviour
 	{
 		[SerializeField] AudioSource audio;
+		public GameObject gameMenu;
+		public GameMenuScript gameMenuScript;
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -150,6 +152,8 @@ namespace StarterAssets
 			{
 				rig1.weight = 0;
 				rig2.weight = 0;
+				gameMenu.SetActive(true);
+				gameMenuScript.isPlayerDead = true;
 				 Cursor.lockState = CursorLockMode.None;
                  Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;

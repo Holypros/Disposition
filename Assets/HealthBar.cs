@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public int actualHealth = 100;
+    public float actualHealth = 100;
     public float speed;
     public Slider slider;
+    public PlayerHealth playerHealth;
     void Start() 
     {
         slider.value = 100;
@@ -21,6 +22,7 @@ public class HealthBar : MonoBehaviour
    }
 void Update() 
 {
+    actualHealth = playerHealth.playerHealth;
     if(Input.GetKeyDown(KeyCode.L))
     {
         SetHealth(50);
