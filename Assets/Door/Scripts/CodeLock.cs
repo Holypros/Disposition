@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CodeLock : MonoBehaviour
 {
     int codeLength;
     int placeInCode;
     [SerializeField] private Animator myDoor = null;
+    [SerializeField] private AudioSource _wrongAudio;
+    [SerializeField] private AudioSource _doorAudio;
 
     public string code = "";
     public string attemptedCode;
+
+    
 
     private void Start()
     {
@@ -38,10 +43,11 @@ public class CodeLock : MonoBehaviour
         if (attemptedCode == code)
         {
             myDoor.Play("OpenDoor", 0, 0);
+            _doorAudio.Play();
         }
         else
         {
-            Debug.Log("WrongCode");
+            _wrongAudio.Play();
         }
     }
 
