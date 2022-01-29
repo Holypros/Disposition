@@ -28,11 +28,12 @@ public class ShootingAiTut : MonoBehaviour
 
     //States
     public bool isDead;
+    public bool detectingDamage = false;
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
     //Special
-    public Material green, red, yellow;
+   // public Material green, red, yellow;
     public GameObject projectile;
 
     private void Awake()
@@ -54,6 +55,7 @@ public class ShootingAiTut : MonoBehaviour
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
             if (!playerInSightRange && !playerInAttackRange) Patroling();
+            if (detectingDamage) ChasePlayer();
             if (playerInSightRange && !playerInAttackRange) ChasePlayer();
             if (playerInAttackRange && playerInSightRange) AttackPlayer();
         }
@@ -80,7 +82,7 @@ public class ShootingAiTut : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
 
-        GetComponent<MeshRenderer>().material = green;
+     //   GetComponent<MeshRenderer>().material = green;
     }
     private void SearchWalkPoint()
     {
@@ -89,7 +91,7 @@ public class ShootingAiTut : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint,-transform.up, 2,whatIsGround))
+        //if (Physics.Raycast(walkPoint,-transform.up, 2,whatIsGround))
         walkPointSet = true;
     }
     private void ChasePlayer()
@@ -145,10 +147,11 @@ public class ShootingAiTut : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-
+        detectingDamage = true;
         if (health < 0){
             isDead = true;
             animator.SetBool("isDead",true);
+            audioSource.Stop();
             //Invoke("Destroyy", 2.8f);
         }
     }
