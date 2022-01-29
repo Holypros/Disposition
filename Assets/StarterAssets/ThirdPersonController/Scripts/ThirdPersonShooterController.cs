@@ -22,9 +22,11 @@ public class ThirdPersonShooterController : MonoBehaviour
 
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInput;
+    public PlayerHealth playerHealth;
 
     private void Awake()
     {
+        playerHealth = GetComponent<PlayerHealth>();
         starterAssetsInput = GetComponent<StarterAssetsInputs>();
         thirdPersonController = GetComponent<ThirdPersonController>();
         audioSource = GameObject.Find("SpawnLocation").GetComponent<AudioSource>();
@@ -33,6 +35,10 @@ public class ThirdPersonShooterController : MonoBehaviour
 
     private void Update()
     {
+        if(playerHealth.isPlayerAlive)
+        {
+
+        
         Vector3 mouseWorldPosition = Vector3.zero;
 
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
@@ -84,6 +90,7 @@ public class ThirdPersonShooterController : MonoBehaviour
             
             bulletGame.GetComponent<BulletHit>().timeTravel = GetComponent<TimeTravel>();
             starterAssetsInput.shoot = false;
+        }
         }
        
     }

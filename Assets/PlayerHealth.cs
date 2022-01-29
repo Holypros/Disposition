@@ -17,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
         if(playerHealth <= 0)
         {
             isPlayerAlive = false;
+            animator1.SetBool("isDead",true);
+            animator2.SetBool("isDead",true);
             //Play dead animation
         }
     }

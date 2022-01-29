@@ -11,7 +11,11 @@ public class DestroyAfterCollision : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) 
     {
-        Debug.Log("Hit something");
+        if(other.tag == "Player")
+        {
+            other.GetComponent<PlayerHealth>().TakeDamage(20);
+        }
+        //Debug.Log("Hit something");
         Destroy(gameObject, 0f);
 
     }

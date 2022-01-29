@@ -9,6 +9,7 @@ public class ShootingAiTut : MonoBehaviour
 
     public Transform player;
     public GameObject gun;
+    public Animator animator;
 
     //Stats
     public int health;
@@ -36,6 +37,7 @@ public class ShootingAiTut : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
@@ -95,6 +97,9 @@ public class ShootingAiTut : MonoBehaviour
         if (isDead) return;
 
         agent.SetDestination(player.position);
+        animator.SetBool("isAttacking",false);
+        animator.SetBool("isRunning",true);
+
 
         //GetComponent<MeshRenderer>().material = yellow;
     }
@@ -105,6 +110,8 @@ public class ShootingAiTut : MonoBehaviour
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
         //agent.Stop();
+        animator.SetBool("isAttacking",true);
+        animator.SetBool("isRunning",false);
 
         transform.LookAt(player);
 
@@ -141,7 +148,8 @@ public class ShootingAiTut : MonoBehaviour
 
         if (health < 0){
             isDead = true;
-            Invoke("Destroyy", 2.8f);
+            animator.SetBool("isDead",true);
+            //Invoke("Destroyy", 2.8f);
         }
     }
     private void Destroyy()

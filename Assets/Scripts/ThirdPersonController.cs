@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Animations.Rigging;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -104,9 +105,13 @@ namespace StarterAssets
 
 		[SerializeField] Animator animator1;
 		[SerializeField] Animator animator2;
+		public PlayerHealth playerHealth;
+		public Rig rig1;
+		public Rig rig2;
 
 		private void Awake()
 		{
+			playerHealth = GetComponent<PlayerHealth>();
 			// get a reference to our main camera
 			if (_mainCamera == null)
 			{
@@ -135,10 +140,23 @@ namespace StarterAssets
 		private void Update()
 		{
 			_hasAnimator = TryGetComponent(out _animator);
+			if(playerHealth.isPlayerAlive)
+			{
+			   JumpAndGravity();
+			   GroundedCheck();
+			   Move();
+			}
+			else
+			{
+				rig1.weight = 0;
+				rig2.weight = 0;
+				 Cursor.lockState = CursorLockMode.None;
+                 Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+
+				//ui shiit here
+			}
 			
-			JumpAndGravity();
-			GroundedCheck();
-			Move();
 			
 		}
 
@@ -314,7 +332,7 @@ namespace StarterAssets
 				}
 			}
 			
-			Debug.Log(currentHorizontalSpeed);
+			//Debug.Log(currentHorizontalSpeed);
 		}
 
 		private void JumpAndGravity()
