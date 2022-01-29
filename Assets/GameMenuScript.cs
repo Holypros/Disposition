@@ -54,6 +54,6 @@ public class GameMenuScript : MonoBehaviour
     public void Rerty()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

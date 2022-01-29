@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public Animator animator2;
     void Start() 
     {
-        playerHealth = 100f;
+        playerHealth = 1000f;
     }
     void Update() 
     {

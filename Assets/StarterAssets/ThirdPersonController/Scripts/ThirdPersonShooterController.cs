@@ -29,7 +29,6 @@ public class ThirdPersonShooterController : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
         starterAssetsInput = GetComponent<StarterAssetsInputs>();
         thirdPersonController = GetComponent<ThirdPersonController>();
-        audioSource = GameObject.Find("SpawnLocation").GetComponent<AudioSource>();
 
     }
 

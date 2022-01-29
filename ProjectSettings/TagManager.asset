@@ -9,6 +9,8 @@ TagManager:
   - EnemyWorldTwo
   - EnemyWorldOne
   - Bullet
+  - CinemachineTarget
+  - End
   layers:
   - Default
   - TransparentFX
