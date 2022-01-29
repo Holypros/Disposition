@@ -1797,7 +1797,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0a2ce9f5073fa504ebc4a2da57dad206, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.154
   m_Pitch: -1.57
   Loop: 1
   Mute: 0
@@ -5217,6 +5217,11 @@ Transform:
   m_Father: {fileID: 1570998522}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &545514391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8969223553612722490, guid: aeb3f6fac1c9757488e4e33dfcbb3c70, type: 3}
+  m_PrefabInstance: {fileID: 1725679417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &546802409
 GameObject:
   m_ObjectHideFlags: 0
@@ -9393,8 +9398,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3501798255053632991}
     - target: {fileID: 2956992182846769940, guid: d0c79a53db654e7498e81657f30d1841, type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 3501798255053632991}
+    - target: {fileID: 2956992182846769940, guid: d0c79a53db654e7498e81657f30d1841, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 2.2835052
+      value: 1.7777778
       objectReference: {fileID: 0}
     - target: {fileID: 2956992182846769941, guid: d0c79a53db654e7498e81657f30d1841, type: 3}
       propertyPath: m_RootOrder
@@ -10008,7 +10017,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: aa2f192199e7f634aa879d94fd6e6270, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.162
   m_Pitch: 0.53
   Loop: 1
   Mute: 0
@@ -16523,8 +16532,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3501798255053632991}
     - target: {fileID: 8969223553612722372, guid: aeb3f6fac1c9757488e4e33dfcbb3c70, type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 3501798255053632991}
+    - target: {fileID: 8969223553612722372, guid: aeb3f6fac1c9757488e4e33dfcbb3c70, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 2.2835052
+      value: 1.7777778
       objectReference: {fileID: 0}
     - target: {fileID: 8969223553612722373, guid: aeb3f6fac1c9757488e4e33dfcbb3c70, type: 3}
       propertyPath: m_RootOrder
@@ -17175,6 +17188,41 @@ PrefabInstance:
       objectReference: {fileID: 1685267879}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2926530ab56436d40a95061e9a18cf74, type: 3}
+--- !u!1 &1768749589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2956992182846769898, guid: d0c79a53db654e7498e81657f30d1841, type: 3}
+  m_PrefabInstance: {fileID: 982241920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1768749591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768749589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 64
+  m_IgnoreTag: Player
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 0
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1 &1789505212
 GameObject:
   m_ObjectHideFlags: 0
@@ -19639,7 +19687,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8969223553612722372, guid: aeb3f6fac1c9757488e4e33dfcbb3c70, type: 3}
   m_PrefabInstance: {fileID: 1725679417}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 545514391}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
@@ -19650,6 +19698,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8969223553612722373, guid: aeb3f6fac1c9757488e4e33dfcbb3c70, type: 3}
   m_PrefabInstance: {fileID: 1725679417}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2120192068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545514391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 64
+  m_IgnoreTag: Player
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 0
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1 &2130303461
 GameObject:
   m_ObjectHideFlags: 0
