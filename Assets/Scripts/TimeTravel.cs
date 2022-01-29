@@ -56,12 +56,12 @@ public class TimeTravel : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            ChangeWorld();
-        }
+        //if(Input.GetKeyDown(KeyCode.T))
+        //{
+        //    ChangeWorld();
+        //}
     }
-    void ChangeWorld()
+   public void ChangeWorld()
     {
         if(isWorldOneActive == true && isWorldTwoActive == false)
         {
