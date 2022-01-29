@@ -12,6 +12,8 @@ public class TimeTravel : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer mRendererTwo;
     [SerializeField] SkinnedMeshRenderer mRendererOneOne;
     [SerializeField] SkinnedMeshRenderer mRendererTwoTwo;
+     [SerializeField] MeshRenderer mRendererOneOneOne;
+    [SerializeField] MeshRenderer mRendererTwoTwoTwo;
 
     private void Awake()
     {
@@ -41,8 +43,15 @@ public class TimeTravel : MonoBehaviour
         if (mRendererTwoTwo == null)
             mRendererTwoTwo = GameObject.Find("female_zbrush2").GetComponent<SkinnedMeshRenderer>();
 
+        if (mRendererOneOneOne == null)
+            mRendererOneOneOne = GameObject.Find("Rifle1").GetComponent<MeshRenderer>();
+
+        if (mRendererTwoTwoTwo == null)
+            mRendererTwoTwoTwo = GameObject.Find("Rifle2").GetComponent<MeshRenderer>();
+
         mRendererTwo.enabled = false;
         mRendererTwoTwo.enabled = false;
+        mRendererTwoTwoTwo.enabled = false;
 
     }
     void Update()
@@ -62,6 +71,8 @@ public class TimeTravel : MonoBehaviour
             mRendererOne.enabled = false;
             mRendererTwoTwo.enabled = true;
             mRendererOneOne.enabled = false;
+            mRendererTwoTwoTwo.enabled = true;
+            mRendererOneOneOne.enabled = false;
 
             isWorldTwoActive = true;
             isWorldOneActive = false;
@@ -74,6 +85,8 @@ public class TimeTravel : MonoBehaviour
             mRendererOne.enabled = true;
             mRendererTwoTwo.enabled = false;
             mRendererOneOne.enabled = true;
+            mRendererTwoTwoTwo.enabled = false;
+            mRendererOneOneOne.enabled = true;
             isWorldTwoActive = false;
             isWorldOneActive = true;
         }
